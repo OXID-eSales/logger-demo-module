@@ -26,38 +26,26 @@
 use OxidEsales\EventLoggerDemo\BasketItemLogger;
 
 /**
- * Class oeLoggerDemoOxBasket.
- * Extends oxBasket.
- *
- * @see oxBasket
+ * Test class for checking if logger correctly integrates with shop via bridge.
  */
-class oeLoggerDemoOxBasket extends oeLoggerDemoOxBasket_parent
+class LogAddToBasketTest extends oxUnitTestCase
 {
     /**
-     * Method overrides eShop method and adds logging functionality.
-     *
-     * @param string      $sProductID
-     * @param int         $dAmount
-     * @param null|array  $aSel
-     * @param null|array  $aPersParam
-     * @param bool|false  $blOverride
-     * @param bool|false  $blBundle
-     * @param null|string $sOldBasketItemId
-     *
-     * @return oxBasketItem|null
+     * Test creates virtual directory and checks if required information was logged.
      */
-    public function addToBasket(
-        $sProductID,
-        $dAmount,
-        $aSel = null,
-        $aPersParam = null,
-        $blOverride = false,
-        $blBundle = false,
-        $sOldBasketItemId = null
-    ) {
-        $basketItemLogger = new BasketItemLogger($this->getConfig()->getLogsDir());
-        $basketItemLogger->logItemToBasket($sProductID);
+    public function testChecksWhenCustomerClicksAddToBasket()
+    {
+        $articleId = 'testArticleId';
+        $basketComponent = oxNew('oxcmp_basket');
+        $this->setRequestParameter('aid', $articleId);
 
-        return parent::addToBasket($sProductID, $dAmount, $aSel, $aPersParam, $blOverride, $blBundle, $sOldBasketItemId);
+        $vfsStreamWrapper = $this->getVfsStreamWrapper();
+        $vfsStreamWrapper->createStructure(array('log' => array()));
+        $this->getConfig()->setConfigParam('sShopDir', $vfsStreamWrapper->getRootPath());
+        $basketComponent->tobasket();
+        $fakeBasketLogFile = $vfsStreamWrapper->getRootPath() . 'log' . DIRECTORY_SEPARATOR . BasketItemLogger::FILE_NAME;
+        $fileContents = file_get_contents($fakeBasketLogFile);
+
+        $this->assertTrue((bool)strpos($fileContents, $articleId));
     }
 }
