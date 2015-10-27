@@ -25,12 +25,17 @@ class BasketLogTest extends oxAcceptanceTestCase
      */
     public function testArticleAdditionToBasketWithLoggingOn()
     {
-        // In case you want to use headless driver, uncomment following line
+        // In case you want to use headless driver, uncomment following line.
         // $this->startMinkSession('goutte');
 
         $this->openShop();
+
+        // Sleep was added for demonstration purposes.
+        sleep(2);
         $this->addToBasket('f4f73033cf5045525644042325355732', 1, 'basket');
 
+        // Sleep was added for demonstration purposes.
+        sleep(2);
         $this->assertElementPresent('cartItem_1');
     }
 }
