@@ -20,10 +20,13 @@ http://www.oxid-esales.com/en/
 mantas.vaitkunas@oxid-eslaes.com
 
 ==Description==
-OE Logger Demo Module
+This is a demo module which logs articles when user clicks "Add to basket" button.
+Puprpose of it is to show how to use 3-rd party components.
 
 ==Installation==
-Activate the module in administration area.
+This module is dependent on 3rd party component: https://github.com/OXID-eSales/event_logger_demo
+Information how to install it: https://github.com/OXID-eSales/event_logger_demo/tree/master#installation
+After installing component activate the module in administration area.
 
 ==Extend==
  * oxbasket
