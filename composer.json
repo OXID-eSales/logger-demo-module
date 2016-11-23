@@ -1,0 +1,26 @@
+{
+  "name": "oxid-esales/logger-demo-module",
+  "description": "This package contains demo module for OXID eShop.",
+  "type": "oxideshop-module",
+  "keywords": ["oxid", "modules", "eShop", "demo"],
+  "homepage": "https://www.oxid-esales.com/en/home.html",
+  "license": [
+    "GPL-3.0",
+    "proprietary"
+  ],
+  "require": {
+    "oxid-esales/event_logger_demo": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "OxidEsales\\LoggerDemo\\": "../../../source/modules/oe/loggerdemo"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "extra": {
+    "oxideshop": {
+      "target-directory": "oe/loggerdemo"
+    }
+  }
+}

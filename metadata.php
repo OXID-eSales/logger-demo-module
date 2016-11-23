@@ -26,40 +26,34 @@
 /**
  * Metadata version
  */
-$sMetadataVersion = '1.1';
+$sMetadataVersion = '1.2';
 
 /**
  * Module information
  */
 $aModule = array(
     'id'          => 'oeloggerdemo',
-    'title'       => array(
+    'title'       => [
         'de' => '[TR - OE Logger Demo]',
         'en' => 'OE Logger Demo',
-    ),
-    'description' => array(
+    ],
+    'description' => [
         'de' => '[TR - OE Logger Demo Module]',
         'en' => 'OE Logger Demo Module',
-    ),
+    ],
     'thumbnail'   => 'out/pictures/picture.png',
-    'version'     => '1.0.0',
+    'version'     => '2.0.0',
     'author'      => 'OXID eSales AG',
     'url'         => 'http://www.oxid-esales.com/en/',
-    'email'       => 'mantas.vaitkunas@oxid-eslaes.com',
-    'extend'      => array(
-        'oxbasket' => 'oe/loggerdemo/models/oeloggerdemooxbasket',
-            ),
-    'files'       => array(
-        'oeloggerdemomodule' => 'oe/loggerdemo/core/oeloggerdemomodule.php',
-),
-    'templates'   => array(
-),
-    'blocks'      => array(
-            ),
-    'settings'    => array(
-        ),
-    'events'      => array(
-        'onActivate'   => 'oeLoggerDemoModule::onActivate',
-        'onDeactivate' => 'oeLoggerDemoModule::onDeactivate',
-    ),
+    'email'       => 'mantas.vaitkunas@oxid-esales.com',
+    'extend'      => [
+        \OxidEsales\Eshop\Application\Model\Basket::class => \OxidEsales\LoggerDemo\Model\Basket::class,
+    ],
+    'templates'   => [],
+    'blocks'      => [],
+    'settings'    => [],
+    'events'      => [
+        'onActivate'   => \OxidEsales\LoggerDemo\Core\DemoModule::onActivate(),
+        'onDeactivate' => \OxidEsales\LoggerDemo\Core\DemoModule::onDeactivate(),
+    ],
 );

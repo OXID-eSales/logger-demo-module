@@ -23,15 +23,17 @@
  * @copyright (C) OXID e-Sales, 2003-2015
  */
 
+namespace OxidEsales\LoggerDemo\Model;
+
 use OxidEsales\EventLoggerDemo\BasketItemLogger;
 
 /**
  * Class oeLoggerDemoOxBasket.
  * Extends oxBasket.
  *
- * @see oxBasket
+ * @see \OxidEsales\Eshop\Application\Model\Basket
  */
-class oeLoggerDemoOxBasket extends oeLoggerDemoOxBasket_parent
+class Basket extends Basket_parent
 {
     /**
      * Method overrides eShop method and adds logging functionality.

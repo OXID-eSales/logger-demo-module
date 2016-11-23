@@ -23,13 +23,20 @@
  * @copyright (C) OXID e-Sales, 2003-2015
  */
 
+namespace OxidEsales\LoggerDemo\Core;
+
+use Exception;
+use oxDb;
+use OxidEsales\Eshop\Core\Module;
+use oxRegistry;
+
 /**
  * Class oeLoggerDemoModule
  * Handles module setup, provides additional tools and module related helpers.
  *
  * @codeCoverageIgnore
  */
-class oeLoggerDemoModule extends oxModule
+class DemoModule extends Module
 {
 
     /**
