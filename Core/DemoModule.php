@@ -27,7 +27,7 @@ namespace OxidEsales\LoggerDemo\Core;
 
 use Exception;
 use oxDb;
-use OxidEsales\Eshop\Core\Module;
+use OxidEsales\Eshop\Core\Module\Module;
 use oxRegistry;
 
 /**
@@ -38,7 +38,6 @@ use oxRegistry;
  */
 class DemoModule extends Module
 {
-
     /**
      * Class constructor.
      * Sets current module main data and loads the rest module info.

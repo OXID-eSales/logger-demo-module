@@ -23,12 +23,13 @@
  * @copyright (C) OXID e-Sales, 2003-2015
  */
 
+use OxidEsales\Eshop\Application\Component\BasketComponent;
 use OxidEsales\EventLoggerDemo\BasketItemLogger;
 
 /**
  * Test class for checking if logger correctly integrates with shop via bridge.
  */
-class LogAddToBasketTest extends oxUnitTestCase
+class LogAddToBasketTest extends  OxidEsales\TestingLibrary\UnitTestCase
 {
     /**
      * Test creates virtual directory and checks if required information was logged.
@@ -36,7 +37,8 @@ class LogAddToBasketTest extends oxUnitTestCase
     public function testChecksWhenCustomerClicksAddToBasket()
     {
         $articleId = 'testArticleId';
-        $basketComponent = oxNew('oxcmp_basket');
+        /** @var BasketComponent $basketComponent */
+        $basketComponent = oxNew(BasketComponent::class);
         $this->setRequestParameter('aid', $articleId);
 
         $vfsStreamWrapper = $this->getVfsStreamWrapper();
