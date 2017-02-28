@@ -25,12 +25,10 @@
 
 namespace OxidEsales\LoggerDemo\Model;
 
+use OxidEsales\Eshop\Application\Model\BasketItem;
 use OxidEsales\EventLoggerDemo\BasketItemLogger;
 
 /**
- * Class oeLoggerDemoOxBasket.
- * Extends oxBasket.
- *
  * @see \OxidEsales\Eshop\Application\Model\Basket
  */
 class Basket extends Basket_parent
@@ -38,28 +36,30 @@ class Basket extends Basket_parent
     /**
      * Method overrides eShop method and adds logging functionality.
      *
-     * @param string      $sProductID
-     * @param int         $dAmount
-     * @param null|array  $aSel
-     * @param null|array  $aPersParam
-     * @param bool|false  $blOverride
-     * @param bool|false  $blBundle
-     * @param null|string $sOldBasketItemId
+     * @param string      $productID
+     * @param int         $amount
+     * @param null|array  $sel
+     * @param null|array  $persParam
+     * @param bool|false  $shouldOverride
+     * @param bool|false  $isBundle
+     * @param null|string $oldBasketItemId
      *
-     * @return oxBasketItem|null
+     * @see \OxidEsales\Eshop\Application\Model\Basket::addToBasket()
+     *
+     * @return BasketItem|null
      */
     public function addToBasket(
-        $sProductID,
-        $dAmount,
-        $aSel = null,
-        $aPersParam = null,
-        $blOverride = false,
-        $blBundle = false,
-        $sOldBasketItemId = null
+        $productID,
+        $amount,
+        $sel = null,
+        $persParam = null,
+        $shouldOverride = false,
+        $isBundle = false,
+        $oldBasketItemId = null
     ) {
         $basketItemLogger = new BasketItemLogger($this->getConfig()->getLogsDir());
-        $basketItemLogger->logItemToBasket($sProductID);
+        $basketItemLogger->logItemToBasket($productID);
 
-        return parent::addToBasket($sProductID, $dAmount, $aSel, $aPersParam, $blOverride, $blBundle, $sOldBasketItemId);
+        return parent::addToBasket($productID, $amount, $sel, $persParam, $shouldOverride, $isBundle, $oldBasketItemId);
     }
 }
