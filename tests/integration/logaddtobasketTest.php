@@ -36,18 +36,32 @@ class LogAddToBasketTest extends  OxidEsales\TestingLibrary\UnitTestCase
      */
     public function testChecksWhenCustomerClicksAddToBasket()
     {
+        $rootPath = $this->mockFileSystemForShop();
+
         $articleId = 'testArticleId';
         /** @var BasketComponent $basketComponent */
         $basketComponent = oxNew(BasketComponent::class);
         $this->setRequestParameter('aid', $articleId);
-
-        $vfsStreamWrapper = $this->getVfsStreamWrapper();
-        $vfsStreamWrapper->createStructure(array('log' => array()));
-        $this->getConfig()->setConfigParam('sShopDir', $vfsStreamWrapper->getRootPath());
         $basketComponent->tobasket();
-        $fakeBasketLogFile = $vfsStreamWrapper->getRootPath() . 'log' . DIRECTORY_SEPARATOR . BasketItemLogger::FILE_NAME;
+
+        $fakeBasketLogFile = $rootPath . 'log' . DIRECTORY_SEPARATOR . BasketItemLogger::FILE_NAME;
         $fileContents = file_get_contents($fakeBasketLogFile);
 
         $this->assertTrue((bool)strpos($fileContents, $articleId));
+    }
+
+    /**
+     * Use VfsStream to not write to file system.
+     *
+     * @return string path to root directory.
+     */
+    private function mockFileSystemForShop()
+    {
+        $vfsStreamWrapper = $this->getVfsStreamWrapper();
+        $vfsStreamWrapper->createStructure(array('log' => array()));
+        $this->getConfig()->setConfigParam('sShopDir', $vfsStreamWrapper->getRootPath());
+        $rootPath = $vfsStreamWrapper->getRootPath();
+
+        return $rootPath;
     }
 }
