@@ -28,6 +28,8 @@ class BasketLogTest extends oxAcceptanceTestCase
         // In case you want to use headless driver, uncomment following line.
         // $this->startMinkSession('goutte');
 
+        $this->activateTheme('azure');
+
         $this->openShop();
 
         // Sleep was added for demonstration purposes.
