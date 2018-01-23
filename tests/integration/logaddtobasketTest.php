@@ -38,16 +38,46 @@ class LogAddToBasketTest extends  OxidEsales\TestingLibrary\UnitTestCase
     {
         $rootPath = $this->mockFileSystemForShop();
 
-        $articleId = 'testArticleId';
+        $productId = 'testArticleId';
+
+        $this->addProductToBasket($productId);
+
+        $fileContents = $this->getLogFileContent($rootPath);
+
+        $this->assertLogContentCorrect($fileContents, $productId);
+    }
+
+    /**
+     * @param string $fileContents
+     * @param string $productId
+     */
+    private function assertLogContentCorrect($fileContents, $productId)
+    {
+        $this->assertTrue((bool)strpos($fileContents, $productId), "Product id does not exist in log file.");
+    }
+
+    /**
+     * @param string $productId
+     */
+    private function addProductToBasket($productId)
+    {
         /** @var BasketComponent $basketComponent */
         $basketComponent = oxNew(BasketComponent::class);
-        $this->setRequestParameter('aid', $articleId);
+        $this->setRequestParameter('aid', $productId);
         $basketComponent->tobasket();
+    }
 
+    /**
+     * @param $rootPath
+     *
+     * @return bool|string
+     */
+    private function getLogFileContent($rootPath)
+    {
         $fakeBasketLogFile = $rootPath . 'log' . DIRECTORY_SEPARATOR . BasketItemLogger::FILE_NAME;
         $fileContents = file_get_contents($fakeBasketLogFile);
 
-        $this->assertTrue((bool)strpos($fileContents, $articleId));
+        return $fileContents;
     }
 
     /**
