@@ -5,8 +5,7 @@
   "keywords": ["oxid", "modules", "eShop", "demo"],
   "homepage": "https://www.oxid-esales.com/en/home.html",
   "license": [
-    "GPL-3.0",
-    "proprietary"
+    "GPL-3.0-only"
   ],
   "require": {
     "oxid-esales/event_logger_demo": "dev-master"
