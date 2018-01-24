@@ -34,7 +34,7 @@ class LogAddToBasketTest extends  OxidEsales\TestingLibrary\UnitTestCase
     /**
      * Test creates virtual directory and checks if required information was logged.
      */
-    public function testChecksWhenCustomerClicksAddToBasket()
+    public function testLoggingWhenCustomerAddsToBasket()
     {
         $rootPath = $this->mockFileSystemForShop();
 
