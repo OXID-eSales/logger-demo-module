@@ -1,1 +1,0 @@
--- OE Logger Demo module uninstall SQL file --
