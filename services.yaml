@@ -1,0 +1,7 @@
+services:
+  oxid_esales.logger_demo.command.read_logs_command:
+    class: OxidEsales\LoggerDemo\Command\ReadLogsCommand
+    public: true
+    autowire: true
+    tags:
+    - { name: 'console.command' }
