@@ -34,11 +34,11 @@ $sMetadataVersion = '2.0';
 $aModule = array(
     'id'          => 'oeloggerdemo',
     'title'       => [
-        'de' => '[TR - OE Logger Demo]',
+        'de' => 'OE Logger Demo',
         'en' => 'OE Logger Demo',
     ],
     'description' => [
-        'de' => '[TR - OE Logger Demo Module]',
+        'de' => 'OE Logger Demo Module',
         'en' => 'OE Logger Demo Module',
     ],
     'thumbnail'   => 'out/pictures/picture.png',
@@ -48,12 +48,5 @@ $aModule = array(
     'email'       => 'mantas.vaitkunas@oxid-esales.com',
     'extend'      => [
         \OxidEsales\Eshop\Application\Model\Basket::class => \OxidEsales\LoggerDemo\Model\Basket::class,
-    ],
-    'templates'   => [],
-    'blocks'      => [],
-    'settings'    => [],
-    'events'      => [
-        'onActivate'   => \OxidEsales\LoggerDemo\Core\DemoModule::onActivate(),
-        'onDeactivate' => \OxidEsales\LoggerDemo\Core\DemoModule::onDeactivate(),
     ],
 );
