@@ -7,7 +7,7 @@
 namespace OxidEsales\LoggerDemo\Command;
 
 use OxidEsales\Eshop\Core\Registry;
-use OxidEsales\EshopCommunity\Internal\Console\AbstractShopAwareCommand;
+use OxidEsales\EshopCommunity\Internal\Framework\Console\AbstractShopAwareCommand;
 use OxidEsales\EventLoggerDemo\BasketItemLogger;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
