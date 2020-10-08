@@ -49,4 +49,12 @@ $aModule = array(
     'extend'      => [
         \OxidEsales\Eshop\Application\Model\Basket::class => \OxidEsales\LoggerDemo\Model\Basket::class,
     ],
+    'settings'    => [
+        [
+            'group' => 'logger',
+            'name'  => 'sLoggerInput',
+            'type'  => 'str',
+            'value' => 'default',
+        ],
+    ],
 );
