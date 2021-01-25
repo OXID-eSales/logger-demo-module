@@ -12,14 +12,9 @@
   },
   "autoload": {
     "psr-4": {
-      "OxidEsales\\LoggerDemo\\": "../../../source/modules/oe/loggerdemo"
+      "OxidEsales\\LoggerDemo\\": ""
     }
   },
   "minimum-stability": "dev",
-  "prefer-stable": true,
-  "extra": {
-    "oxideshop": {
-      "target-directory": "oe/loggerdemo"
-    }
-  }
+  "prefer-stable": true
 }
