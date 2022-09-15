@@ -26,6 +26,7 @@
 namespace OxidEsales\LoggerDemo\Model;
 
 use OxidEsales\Eshop\Application\Model\BasketItem;
+use OxidEsales\Eshop\Core\Registry;
 use OxidEsales\EventLoggerDemo\BasketItemLogger;
 
 /**
@@ -57,7 +58,7 @@ class Basket extends Basket_parent
         $isBundle = false,
         $oldBasketItemId = null
     ) {
-        $basketItemLogger = new BasketItemLogger($this->getConfig()->getLogsDir());
+        $basketItemLogger = new BasketItemLogger(Registry::getConfig()->getLogsDir());
         $basketItemLogger->logItemToBasket($productID);
 
         return parent::addToBasket($productID, $amount, $sel, $persParam, $shouldOverride, $isBundle, $oldBasketItemId);
